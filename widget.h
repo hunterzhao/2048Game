@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QPainter>
 #include <vector>
+#include <QMap>
+#include <QColor>
 const int BLOCK_SIZE=100; //单个方块的边长
 const int MARGIN=5;//场景边距
 const int N=4; //N*N 宫格
@@ -30,11 +32,16 @@ public:
     ~Widget();
     void init();
     void BLOCKMove(Direction dir);
+    void addRandom();
+    void popFail();
+    void popSuccess();
     void paintEvent(QPaintEvent *event);
     void keyPressEvent(QKeyEvent *event);
 
 private:
     std::vector<std::vector<int>> vecs;
+    QMap<int, QColor> map;
+    int emptyLocation;
     Ui::Widget *ui;
 };
 
